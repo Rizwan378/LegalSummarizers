@@ -31,3 +31,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/health")
+async def health_check():
+    """Check API health and OpenAI connectivity."""
+    try:
+        client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        await client.chat.completions.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": "ping"}])
+        return {"status": "healthy"}
+    except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
+        return {"status": "unhealthy", "error": str(e)}
