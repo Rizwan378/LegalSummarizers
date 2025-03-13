@@ -16,3 +16,9 @@ settings = Settings()
     MAX_CSV_SIZE: int = 10 * 1024 * 1024  # 10MB
     ALLOWED_ORIGINS: list = ["http://localhost:3000"]
     CACHE_TTL: int = 3600  # seconds
+
+    RATE_LIMIT_REQUESTS: int = 100
+    RATE_LIMIT_WINDOW: int = 60  # seconds
+    MAX_CSV_SIZE: int = 10 * 1024 * 1024  # 10MB
+    ALLOWED_ORIGINS: list = ["http://localhost:3000"]
+    CACHE_TTL: int = 3600  # seconds
