@@ -129,3 +129,17 @@ async def cache_summaries(summaries: list) -> None:
         await client.setex(key, settings.CACHE_TTL, summary['Summary'])
     await client.close()
     logger.info(f"Cached {len(summaries)} summaries")
+
+def validate_summary(summary: dict) -> bool:
+    """Validate summary format and content."""
+    if not isinstance(summary, dict):
+        logger.error("Summary must be a dictionary")
+        return False
+    if "QuestionText" not in summary or "Summary" not in summary:
+        logger.error("Missing required summary fields")
+        return False
+    if not isinstance(summary["Summary"], str):
+        logger.error("Summary field must be a string")
+        return False
+    logger.info("Summary validated successfully")
+    return True
