@@ -67,3 +67,16 @@ async def summarize_batch_questions(files: List[UploadFile] = File(...)):
     output_path = Path("outputs/batch_output.csv")
     pd.DataFrame(summaries).to_csv(output_path, index=False)
     return FileResponse(output_path, filename="batch_summaries.csv")
+
+@router.get("/stats")
+async def get_summary_stats():
+    """Retrieve statistics about processed summaries."""
+    output_path = Path("outputs/output.csv")
+    if not output_path.exists():
+        return {"total_summaries": 0, "unique_questions": 0}
+    df = pd.read_csv(output_path)
+    return {
+        "total_summaries": len(df),
+        "unique_questions": df['QuestionText'].nunique(),
+        "last_processed": str(output_path.stat().st_mtime)
+    }
