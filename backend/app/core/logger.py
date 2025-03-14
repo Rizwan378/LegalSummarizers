@@ -18,3 +18,11 @@ def configure_file_logging():
     handler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
     logging.getLogger().addHandler(handler)
     logging.getLogger().info("Configured file logging with rotation")
+
+def configure_file_logging():
+    """Add file handler for persistent logs."""
+    from logging.handlers import RotatingFileHandler
+    handler = RotatingFileHandler("logs/app.log", maxBytes=10*1024*1024, backupCount=5)
+    handler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+    logging.getLogger().addHandler(handler)
+    logging.getLogger().info("Configured file logging with rotation")
