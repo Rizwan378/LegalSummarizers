@@ -21,3 +21,13 @@ async def health_check():
     except Exception as e:
         logger.error(f"Health check failed: {str(e)}")
         return {"status": "unhealthy", "error": str(e)}
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
