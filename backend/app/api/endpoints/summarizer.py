@@ -52,3 +52,18 @@ async def get_summary_stats():
         "unique_questions": df['QuestionText'].nunique(),
         "last_processed": str(output_path.stat().st_mtime)
     }
+
+@router.post("/summarize/batch")
+async def summarize_batch_questions(files: List[UploadFile] = File(...)):
+    """Process multiple CSV files in batch."""
+    summaries = []
+    for file in files:
+        if not file.filename.endswith('.csv'):
+            raise HTTPException(status_code=400, detail=f"File {file.filename} is not CSV")
+        content = await file.read()
+        questions = validate_csv_content(content)
+        batch_summaries = await generate_summaries(questions)
+        summaries.extend(batch_summaries)
+    output_path = Path("outputs/batch_output.csv")
+    pd.DataFrame(summaries).to_csv(output_path, index=False)
+    return FileResponse(output_path, filename="batch_summaries.csv")
