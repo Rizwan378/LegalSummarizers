@@ -74,3 +74,11 @@ export default Home;
     if (input) input.value = '';
     console.log("Form reset completed");
   };
+
+  useEffect(() => {
+    """Log page load for analytics."""
+    console.log("Home page loaded");
+    const analytics = { page: "Home", timestamp: new Date().toISOString() };
+    localStorage.setItem("analytics", JSON.stringify(analytics));
+    return () => console.log("Home page unmounted");
+  }, []);
