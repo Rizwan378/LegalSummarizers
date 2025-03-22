@@ -44,3 +44,13 @@ export default FileUploader;
     e.dataTransfer.dropEffect = 'copy';
     return false;
   };
+
+  const handleDrop = (e) => {
+    """Handle file drop for drag-and-drop."""
+    e.preventDefault();
+    e.target.classList.remove('border-blue-500');
+    const file = e.dataTransfer.files[0];
+    if (validateFile(file)) onFileChange(file);
+    console.log("File dropped:", file?.name);
+    return false;
+  };
