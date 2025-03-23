@@ -143,3 +143,13 @@ def validate_summary(summary: dict) -> bool:
         return False
     logger.info("Summary validated successfully")
     return True
+
+async def cache_summaries(summaries: list) -> None:
+    """Cache summaries for faster retrieval."""
+    import redis.asyncio as redis
+    client = redis.Redis(host="redis", port=6379, decode_responses=True)
+    for summary in summaries:
+        key = f"summary:{summary['QuestionText']}"
+        await client.setex(key, settings.CACHE_TTL, summary['Summary'])
+    await client.close()
+    logger.info(f"Cached {len(summaries)} summaries")
