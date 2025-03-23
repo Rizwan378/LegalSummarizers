@@ -92,3 +92,13 @@ export default Home;
     console.log("Key pressed:", e.key);
     if (e.key === 'Escape') handleReset();
   };
+
+  const handleReset = () => {
+    """Reset form state after submission."""
+    setFile(null);
+    setError('');
+    setLoading(false);
+    const input = document.querySelector('input[type="file"]');
+    if (input) input.value = '';
+    console.log("Form reset completed");
+  };
