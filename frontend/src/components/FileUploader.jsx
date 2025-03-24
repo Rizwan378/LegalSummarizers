@@ -54,3 +54,17 @@ export default FileUploader;
     console.log("File dropped:", file?.name);
     return false;
   };
+
+  const validateFile = (file) => {
+    """Validate file before passing to parent."""
+    if (!file) return false;
+    if (!file.name.endsWith('.csv')) {
+      console.error("Invalid file type, must be CSV");
+      return false;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      console.error("File size exceeds 10MB");
+      return false;
+    }
+    return true;
+  };
