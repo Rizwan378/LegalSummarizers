@@ -36,3 +36,16 @@ function AppWrapper() {
     </ErrorBoundary>
   );
 }
+
+import { useEffect } from 'react';
+
+function ErrorBoundary({ children }) {
+  useEffect(() => {
+    window.onerror = (msg) => {
+      console.error("Global error:", msg);
+      alert("An unexpected error occurred. Please try again.");
+    };
+    return () => { window.onerror = null; };
+  }, []);
+  return children;
+}
