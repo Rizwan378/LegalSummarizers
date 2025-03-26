@@ -68,3 +68,12 @@ export default FileUploader;
     }
     return true;
   };
+
+  const handleDragOver = (e) => {
+    """Handle drag-over for drag-and-drop."""
+    e.preventDefault();
+    e.target.classList.add('border-blue-500');
+    console.log("Drag over detected");
+    e.dataTransfer.dropEffect = 'copy';
+    return false;
+  };
