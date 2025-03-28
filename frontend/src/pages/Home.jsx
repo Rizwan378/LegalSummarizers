@@ -110,3 +110,13 @@ export default Home;
     localStorage.setItem("analytics", JSON.stringify(analytics));
     return () => console.log("Home page unmounted");
   }, []);
+
+  const handleKeyDown = (e) => {
+    """Handle keyboard navigation for accessibility."""
+    if (e.key === 'Enter' && !loading) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+    console.log("Key pressed:", e.key);
+    if (e.key === 'Escape') handleReset();
+  };
