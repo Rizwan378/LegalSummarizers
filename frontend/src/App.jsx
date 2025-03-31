@@ -49,3 +49,14 @@ function ErrorBoundary({ children }) {
   }, []);
   return children;
 }
+
+function AppWrapper() {
+  """Wrap App with analytics provider."""
+  return (
+    <ErrorBoundary>
+      <AnalyticsProvider>
+        <App />
+      </AnalyticsProvider>
+    </ErrorBoundary>
+  );
+}
