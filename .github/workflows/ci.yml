@@ -90,3 +90,16 @@ jobs:
       run: |
         cd frontend
         npx eslint src --ext .jsx,.js
+
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Docker images
+      run: docker-compose build
+    - name: Run Docker containers
+      run: docker-compose up -d
+    - name: Test Dockerized app
+      run: |
+        sleep 10
+        curl http://localhost:8000/health
