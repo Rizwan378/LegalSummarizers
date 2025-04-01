@@ -103,3 +103,16 @@ jobs:
       run: |
         sleep 10
         curl http://localhost:8000/health
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Scan backend for vulnerabilities
+      run: |
+        pip install safety
+        safety check -r backend/requirements.txt
+    - name: Scan frontend for vulnerabilities
+      run: |
+        cd frontend
+        npm audit
