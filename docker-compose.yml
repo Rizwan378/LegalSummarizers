@@ -43,3 +43,15 @@ networks:
       timeout: 10s
       retries: 3
       start_period: 10s
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      retries: 3
