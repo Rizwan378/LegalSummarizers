@@ -8,3 +8,10 @@ LegalSummarizer is a production-ready application for summarizing legal question
 - Responsive React frontend
 - Scalable FastAPI backend
 - Dockerized services with CI/CD
+
+## Installation
+1. Clone the repo: 
+2. Configure : Update  with OpenAI API key
+3. Build and run: 
+4. Access frontend: 
+5. Access API: 
