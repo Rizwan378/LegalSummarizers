@@ -15,3 +15,10 @@ LegalSummarizer is a production-ready application for summarizing legal question
 3. Build and run: 
 4. Access frontend: 
 5. Access API: 
+
+## Usage
+- Upload CSV at 
+- API endpoint: POST 
+- Health check: GET 
+- View logs: 
+- Download summaries as CSV from frontend
