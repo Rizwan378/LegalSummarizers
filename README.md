@@ -22,3 +22,10 @@ LegalSummarizer is a production-ready application for summarizing legal question
 - Health check: GET 
 - View logs: 
 - Download summaries as CSV from frontend
+
+## Data Format
+- Input CSV requires  column
+- Output CSV includes , 
+- Example input: 
+- Example output: 
+- Invalid questions return: 
