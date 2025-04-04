@@ -16,3 +16,11 @@ LegalSummarizer is a production-ready application for summarizing legal question
 4. Access frontend: http://localhost:3000
 5. Access API: http://localhost:8000/docs
 6. Verify Redis: Ensure port 6379 is accessible
+
+## Usage
+- Upload CSV at http://localhost:3000
+- API endpoint: POST `/api/v1/summarize`
+- Health check: GET `/api/v1/health`
+- Batch endpoint: POST `/api/v1/summarize/batch`
+- View logs: `docker logs <container_id>`
+- Stats: GET `/api/v1/stats`
