@@ -8,3 +8,11 @@ LegalSummarizer is a production-ready application for summarizing legal question
 - Responsive React frontend
 - Scalable FastAPI backend
 - Dockerized services with CI/CD
+
+## Installation
+1. Clone the repo: `git clone https://github.com/your-username/LegalSummarizer.git`
+2. Configure `.env`: Update `backend/.env` with OpenAI API key
+3. Build and run: `docker-compose up --build`
+4. Access frontend: http://localhost:3000
+5. Access API: http://localhost:8000/docs
+6. Verify Redis: Ensure port 6379 is accessible
