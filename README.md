@@ -24,3 +24,11 @@ LegalSummarizer is a production-ready application for summarizing legal question
 - Batch endpoint: POST `/api/v1/summarize/batch`
 - View logs: `docker logs <container_id>`
 - Stats: GET `/api/v1/stats`
+
+## Data Format
+- Input CSV requires `QuestionText` column
+- Output CSV includes `QuestionText`, `Summary`
+- Example input: "Can I evict my tenant? (NV)"
+- Example output: "Eviction of tenant (NV)"
+- Invalid questions return: "Not a valid legal question"
+- Ensure UTF-8 encoding for CSV files
