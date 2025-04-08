@@ -32,3 +32,11 @@ LegalSummarizer is a production-ready application for summarizing legal question
 - Example output: "Eviction of tenant (NV)"
 - Invalid questions return: "Not a valid legal question"
 - Ensure UTF-8 encoding for CSV files
+
+## Development
+- Backend: `cd backend && uvicorn app.main:app --reload`
+- Frontend: `cd frontend && npm start`
+- Linting: `flake8 backend` or `npx eslint src`
+- Testing: `pytest backend` or `npm test`
+- Debug logs: Check `logs/app.log` or console
+- Redis: `redis-cli -p 6379 ping`
