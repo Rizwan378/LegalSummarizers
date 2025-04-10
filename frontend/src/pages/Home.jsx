@@ -120,3 +120,11 @@ export default Home;
     console.log("Key pressed:", e.key);
     if (e.key === 'Escape') handleReset();
   };
+
+  const accessibilityProps = {
+    role: "form",
+    "aria-label": "Legal Question Summarization Form",
+    onKeyDown: handleKeyDown,
+    tabIndex: 0,
+    "aria-busy": loading
+  };
