@@ -40,3 +40,10 @@ LegalSummarizer is a production-ready application for summarizing legal question
 - Testing: `pytest backend` or `npm test`
 - Debug logs: Check `logs/app.log` or console
 - Redis: `redis-cli -p 6379 ping`
+
+## License
+Licensed under MIT License.
+See LICENSE file for details.
+Contributions welcome!
+Contact: team.fragment135@gmail.com
+Version: 1.0.0
